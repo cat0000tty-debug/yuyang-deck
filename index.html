@@ -1,0 +1,589 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>御養複方系列產品簡介</title>
+<style>
+:root{
+  --ink:#3a2112; --brown:#6b3410; --burnt:#b4521a; --orange:#e07a24; --amber:#f2a541;
+  --cream:#fff7ec; --sand:#fbe6cc;
+  --ming:"PMingLiU","新細明體","MingLiU","細明體",serif;
+  --sans:"Microsoft JhengHei","微軟正黑體","PingFang TC","Noto Sans TC",sans-serif;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{width:100%;height:100%;background:#1e0f06;overflow:hidden;font-family:var(--sans);color:var(--ink)}
+#viewport{position:fixed;inset:0;display:flex;align-items:center;justify-content:center}
+#stage{position:relative;width:1600px;height:900px;flex:none;transform-origin:center center;overflow:hidden;background:#2a1408;box-shadow:0 20px 80px rgba(0,0,0,.5)}
+
+/* ---------- slide base ---------- */
+.slide{position:absolute;inset:0;opacity:0;pointer-events:none;transition:opacity .7s ease}
+.slide.active{opacity:1;pointer-events:auto;z-index:2}
+.bg{position:absolute;inset:-2%;background-size:cover;background-position:center;transform:scale(1.02)}
+.slide.active .bg{animation:kenburns 22s ease-out forwards}
+@keyframes kenburns{from{transform:scale(1.02)}to{transform:scale(1.10)}}
+.wash{position:absolute;inset:0}
+.wash.warm{background:linear-gradient(135deg,rgba(255,247,236,.93) 0%,rgba(255,236,212,.86) 55%,rgba(250,214,170,.80) 100%)}
+.wash.dark{background:linear-gradient(100deg,rgba(58,24,6,.94) 0%,rgba(110,46,12,.86) 45%,rgba(180,82,26,.35) 100%)}
+.wash.ember{background:radial-gradient(ellipse at 70% 50%,rgba(224,122,36,.15),rgba(42,18,6,.88) 75%)}
+.content{position:absolute;inset:0;padding:64px 80px 70px}
+
+/* entrance animation */
+.slide .anim{opacity:0;transform:translateY(24px)}
+.slide.active .anim{animation:rise .8s cubic-bezier(.2,.7,.2,1) forwards;animation-delay:calc(var(--d,0) * 110ms + 150ms)}
+@keyframes rise{to{opacity:1;transform:none}}
+
+/* header */
+.kicker{display:inline-flex;align-items:center;gap:12px;font-size:20px;letter-spacing:.18em;color:var(--burnt);font-weight:700}
+.kicker .code{background:var(--burnt);color:#fff;padding:4px 14px;border-radius:999px;letter-spacing:.08em;font-family:Cambria,"Times New Roman",serif}
+.title{font-family:var(--ming);font-weight:700;-webkit-text-stroke:.03em currentColor;font-size:54px;color:var(--brown);margin-top:8px;letter-spacing:.06em}
+.title small{font-size:28px;color:var(--orange);margin-left:16px;letter-spacing:.04em}
+.rule{width:120px;height:5px;border-radius:3px;background:linear-gradient(90deg,var(--burnt),var(--amber));margin:16px 0 26px}
+
+/* footer */
+.foot{position:absolute;left:80px;right:80px;bottom:22px;display:flex;justify-content:space-between;font-size:13px;color:rgba(107,52,16,.75);letter-spacing:.05em;z-index:3}
+.dark-slide .foot{color:rgba(255,230,200,.7)}
+.foot .pg{font-family:Cambria,"Times New Roman",serif;font-size:15px}
+
+/* ---------- cover ---------- */
+.cover .content{display:flex;flex-direction:column;justify-content:center;padding-left:120px}
+.cover .series{font-size:24px;letter-spacing:.5em;color:var(--amber);font-weight:700}
+.cover h1{font-family:var(--ming);font-weight:700;-webkit-text-stroke:.03em currentColor;font-size:118px;color:#fff;letter-spacing:.12em;margin:18px 0 8px;text-shadow:0 6px 30px rgba(0,0,0,.4)}
+.cover h2{font-size:38px;color:#ffe2c0;font-weight:400;letter-spacing:.3em}
+.cover .line{width:220px;height:4px;background:linear-gradient(90deg,var(--amber),transparent);margin:34px 0}
+.cover .sub{font-size:24px;color:#ffd9b0;letter-spacing:.12em;line-height:1.8}
+.cover .date{margin-top:40px;font-family:Cambria,"Times New Roman",serif;color:rgba(255,220,180,.75);font-size:20px;letter-spacing:.2em}
+
+/* ---------- overview ---------- */
+.grid8{display:grid;grid-template-columns:repeat(4,1fr);gap:24px}
+.pcard{background:rgba(255,250,243,.94);border-radius:18px;padding:24px 24px 22px;box-shadow:0 10px 30px rgba(120,50,10,.15);border-top:6px solid var(--orange);cursor:pointer;transition:transform .25s,box-shadow .25s;min-height:300px;display:flex;flex-direction:column}
+.pcard:hover{transform:translateY(-6px);box-shadow:0 18px 40px rgba(120,50,10,.28)}
+.pcard .c{font-family:Cambria,"Times New Roman",serif;font-size:22px;color:var(--orange);font-weight:700;letter-spacing:.1em}
+.pcard .n{font-family:var(--ming);font-weight:700;-webkit-text-stroke:.03em currentColor;font-size:34px;color:var(--brown);margin:8px 0 14px;line-height:1.25}
+.pcard .k{margin-top:auto;font-size:20px;line-height:1.55;color:#5a3418;background:var(--sand);border-radius:10px;padding:10px 14px}
+.pcard .k b{color:var(--burnt);display:block;font-size:14px;letter-spacing:.15em;margin-bottom:2px}
+
+/* ---------- base (CM027) ---------- */
+.two{display:flex;gap:34px;height:640px}
+.panel{background:rgba(255,250,243,.95);border-radius:20px;padding:30px 36px;box-shadow:0 10px 30px rgba(120,50,10,.15)}
+.facts{flex:1.25;display:flex;flex-direction:column;justify-content:space-around}
+.fact{display:flex;gap:20px;align-items:flex-start}
+.fact .lab{flex:none;width:130px;font-weight:700;color:#fff;background:linear-gradient(135deg,var(--burnt),var(--orange));border-radius:10px;padding:10px 0;text-align:center;font-size:20px;letter-spacing:.1em}
+.fact .val{font-size:25px;line-height:1.6;padding-top:6px}
+.chips{display:flex;flex-wrap:wrap;gap:10px}
+.chip{background:var(--sand);color:var(--brown);border:1.5px solid rgba(224,122,36,.45);padding:5px 14px;border-radius:999px;font-size:19px}
+
+/* ---------- product intro ---------- */
+.pintro .photo{position:absolute;top:0;bottom:0;right:0;width:40%;background-size:cover;background-position:center}
+.pintro .photo::after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(58,24,6,1) 0%,rgba(58,24,6,.0) 35%)}
+.pintro .left{position:absolute;top:0;bottom:0;left:0;width:62%;padding:58px 40px 60px 80px;display:flex;flex-direction:column;color:#fff3e4}
+.pintro .code{font-family:Cambria,"Times New Roman",serif;font-size:26px;color:var(--amber);letter-spacing:.3em;font-weight:700}
+.pintro h2{font-family:var(--ming);font-weight:700;-webkit-text-stroke:.03em currentColor;font-size:72px;color:#fff;letter-spacing:.08em;margin:4px 0 14px;line-height:1.15}
+.pintro .claim{display:inline-block;background:linear-gradient(90deg,var(--orange),var(--amber));color:#3a1a05;font-weight:700;font-size:24px;padding:9px 22px;border-radius:999px;letter-spacing:.06em;box-shadow:0 6px 20px rgba(0,0,0,.25)}
+.pintro .claim span{font-weight:400;opacity:.8;margin-right:8px;font-size:18px}
+.pintro .fit{flex:1;min-height:0;overflow:hidden;margin-top:24px}
+.pintro .sec{margin-bottom:.8em}
+.pintro .sec h4{font-size:.82em;color:var(--amber);letter-spacing:.2em;margin-bottom:.3em;display:flex;align-items:center;gap:10px}
+.pintro .sec h4::after{content:"";flex:1;height:1px;background:rgba(242,165,65,.35)}
+.pintro .sec p{line-height:1.7;margin-bottom:.35em;text-align:justify}
+.pintro .chips .chip{background:rgba(255,240,220,.12);color:#ffe9cf;border-color:rgba(242,165,65,.55);font-size:.9em}
+.pintro .chips .chip.main{background:var(--amber);color:#3a1a05;border-color:var(--amber);font-weight:700}
+
+/* ---------- ingredient cards ---------- */
+.cards{display:flex;gap:26px;height:610px}
+.card{flex:1;background:rgba(255,250,243,.95);border-radius:18px;box-shadow:0 10px 30px rgba(120,50,10,.16);display:flex;flex-direction:column;overflow:hidden;min-width:0}
+.card .ch{padding:18px 26px 14px;background:linear-gradient(90deg,var(--burnt),var(--orange) 70%,var(--amber));color:#fff;font-family:var(--ming);font-weight:700;-webkit-text-stroke:.03em currentColor;font-size:32px;letter-spacing:.06em;flex:none}
+.card .ch.shared{background:linear-gradient(90deg,#7a3a12,#a8571f)}
+.card .ch em{font-style:normal;font-family:var(--sans);font-size:15px;opacity:.85;margin-left:10px;letter-spacing:.1em;vertical-align:middle;border:1px solid rgba(255,255,255,.6);border-radius:999px;padding:1px 10px}
+.card .cb{flex:1;min-height:0;overflow:hidden;padding:18px 26px 20px}
+.card .cb p{line-height:1.65;margin-bottom:.5em;text-align:justify;color:#4a2a14}
+.card .cb .lh{font-weight:700;color:var(--burnt);margin:.4em 0 .3em;letter-spacing:.06em}
+.card ol{list-style:none;counter-reset:n}
+.card .sp{display:grid;grid-template-columns:1fr 1fr;gap:34px;height:100%}
+.card .sp>div:first-child{border-right:2px dashed rgba(224,122,36,.3);padding-right:30px}
+.card ol.c2{columns:2;column-gap:28px}
+.card li{counter-increment:n;position:relative;padding-left:2em;line-height:1.5;margin-bottom:.42em;break-inside:avoid}
+.card li::before{content:counter(n);position:absolute;left:0;top:.12em;width:1.45em;height:1.45em;border-radius:50%;background:var(--sand);color:var(--burnt);font-size:.82em;font-weight:700;display:flex;align-items:center;justify-content:center;font-family:Cambria,"Times New Roman",serif;border:1.5px solid rgba(224,122,36,.5)}
+
+/* ---------- table ---------- */
+.tbl{width:100%;border-collapse:separate;border-spacing:0;background:rgba(255,250,243,.96);border-radius:18px;overflow:hidden;box-shadow:0 10px 30px rgba(120,50,10,.16)}
+.tbl th{background:linear-gradient(90deg,var(--burnt),var(--orange));color:#fff;font-size:20px;padding:14px 18px;text-align:left;letter-spacing:.12em}
+.tbl td{padding:15px 18px;font-size:21px;line-height:1.45;border-bottom:1px solid rgba(224,122,36,.18);vertical-align:middle}
+.tbl tr:nth-child(even) td{background:rgba(251,230,204,.45)}
+.tbl tr{cursor:pointer}
+.tbl tbody tr:hover td{background:rgba(242,165,65,.25)}
+.tbl td.code{font-family:Cambria,"Times New Roman",serif;color:var(--orange);font-weight:700;font-size:20px;white-space:nowrap}
+.tbl td.nm{font-family:var(--ming);font-weight:700;-webkit-text-stroke:.03em currentColor;font-size:24px;color:var(--brown);white-space:nowrap}
+.tbl td.cl{color:var(--burnt);font-weight:700;white-space:nowrap}
+
+/* ---------- word cloud ---------- */
+.cloudbar{display:flex;align-items:center;gap:14px;margin-top:-8px;margin-bottom:12px}
+.btn{font-family:var(--sans);font-size:17px;border:1.5px solid var(--orange);background:rgba(255,250,243,.9);color:var(--burnt);padding:7px 18px;border-radius:999px;cursor:pointer;transition:.2s;letter-spacing:.06em}
+.btn:hover{background:var(--sand)}
+.btn.on{background:var(--orange);color:#fff}
+.legend{margin-left:auto;display:flex;gap:18px;font-size:16px;color:#6b3410}
+.legend i{display:inline-block;width:14px;height:14px;border-radius:4px;margin-right:6px;vertical-align:-2px}
+#cloud{position:relative;width:1440px;height:610px;border-radius:24px;background:radial-gradient(ellipse at center,rgba(255,250,243,.92),rgba(255,240,222,.82) 70%,rgba(255,232,205,.6));box-shadow:inset 0 0 60px rgba(224,122,36,.18)}
+.w{position:absolute;left:0;top:0;white-space:nowrap;font-weight:700;cursor:pointer;line-height:1;user-select:none;
+   transition:transform 1s cubic-bezier(.2,.8,.2,1),opacity .6s,filter .3s,text-shadow .3s;will-change:transform}
+.w:hover{text-shadow:0 4px 18px rgba(224,122,36,.55);filter:brightness(1.12)}
+.w.dim{opacity:.16 !important}
+.w.sel{text-shadow:0 0 22px rgba(242,165,65,.9)}
+#info{position:absolute;right:22px;bottom:22px;width:420px;background:rgba(58,24,6,.94);color:#ffeedd;border-radius:18px;padding:20px 24px;box-shadow:0 14px 40px rgba(0,0,0,.35);opacity:0;transform:translateY(16px);transition:.35s;pointer-events:none}
+#info.show{opacity:1;transform:none;pointer-events:auto}
+#info h3{font-family:var(--ming);font-weight:700;-webkit-text-stroke:.03em currentColor;font-size:36px;color:#fff;letter-spacing:.06em}
+#info .tp{display:inline-block;font-size:14px;background:var(--orange);color:#fff;border-radius:999px;padding:2px 12px;margin-left:10px;vertical-align:middle;font-family:var(--sans)}
+#info .st{margin:8px 0 12px;color:#ffcf99;font-size:17px}
+#info .pl{display:flex;flex-wrap:wrap;gap:8px}
+#info .pl button{font-family:var(--sans);font-size:16px;background:rgba(255,240,220,.12);color:#ffe9cf;border:1px solid rgba(242,165,65,.6);border-radius:999px;padding:5px 12px;cursor:pointer}
+#info .pl button:hover{background:var(--amber);color:#3a1a05}
+#info .x{position:absolute;right:14px;top:10px;background:none;border:0;color:#ffcf99;font-size:24px;cursor:pointer}
+.hint{position:absolute;left:24px;bottom:18px;font-size:15px;color:rgba(107,52,16,.7)}
+
+/* ---------- chrome ---------- */
+#progress{position:absolute;left:0;top:0;height:5px;background:linear-gradient(90deg,var(--burnt),var(--amber));z-index:10;transition:width .5s}
+#nav{position:fixed;right:0;bottom:0;padding:40px 18px 16px 60px;display:flex;gap:8px;z-index:20;opacity:0;transition:opacity .3s}
+#nav:hover{opacity:1}
+#nav button{width:42px;height:42px;border-radius:50%;border:0;background:rgba(224,122,36,.92);color:#fff;font-size:18px;cursor:pointer;box-shadow:0 4px 14px rgba(0,0,0,.3)}
+#nav button:hover{background:var(--burnt)}
+#music{position:fixed;top:16px;right:18px;z-index:20;display:flex;align-items:center;gap:6px;background:rgba(58,24,6,.82);border:1px solid rgba(242,165,65,.5);border-radius:999px;padding:5px 6px 5px 6px;box-shadow:0 4px 18px rgba(0,0,0,.3);color:#ffe2c0;font-family:var(--sans);transition:opacity .3s}
+#music button{border:0;cursor:pointer;font-family:var(--sans)}
+#mPlay{width:38px;height:38px;border-radius:50%;background:linear-gradient(135deg,var(--orange),var(--amber));color:#3a1a05;font-size:17px;font-weight:700}
+#mNext{width:30px;height:30px;border-radius:50%;background:rgba(255,240,220,.12);color:#ffe2c0;font-size:13px}
+#mNext:hover{background:rgba(255,240,220,.25)}
+#mLabel{font-size:14px;letter-spacing:.06em;padding:0 6px;white-space:nowrap;max-width:240px;overflow:hidden}
+#music .bars{display:none;gap:2px;align-items:flex-end;height:14px;margin-left:4px}
+#music.playing .bars{display:flex}
+#music .bars i{width:3px;background:var(--amber);border-radius:1px;animation:eq 1s ease-in-out infinite}
+#music .bars i:nth-child(2){animation-delay:.25s}#music .bars i:nth-child(3){animation-delay:.5s}
+@keyframes eq{0%,100%{height:4px}50%{height:14px}}
+#credits{position:fixed;inset:0;background:rgba(20,8,2,.8);z-index:30;display:none;align-items:center;justify-content:center}
+#credits.show{display:flex}
+#credits .box{background:var(--cream);border-radius:18px;max-width:900px;width:90%;max-height:85vh;overflow:auto;padding:28px 34px;font-size:15px;line-height:1.7}
+#credits h3{font-family:var(--ming);font-weight:700;-webkit-text-stroke:.03em currentColor;font-size:28px;color:var(--brown);margin-bottom:10px}
+#credits li{margin-left:1.2em}
+#credits a{color:var(--burnt)}
+</style>
+</head>
+<body>
+<div id="viewport"><div id="stage"><div id="progress"></div></div></div>
+<div id="nav">
+  <button id="bPrev" title="上一張 (←)">◀</button>
+  <button id="bNext" title="下一張 (→)">▶</button>
+  <button id="bFull" title="全螢幕 (F)">⛶</button>
+  <button id="bCred" title="圖片來源">ⓘ</button>
+</div>
+<div id="music" title="背景音樂 (M)">
+  <button id="mPlay" aria-label="播放背景音樂">♪</button>
+  <span class="bars"><i></i><i></i><i></i></span>
+  <span id="mLabel">Healing（冥想療癒）</span>
+  <button id="mNext" title="下一首" aria-label="下一首">⏭</button>
+</div>
+<audio id="bgm" preload="auto" src="music/healing.mp3"></audio>
+<div id="credits"><div class="box"><h3>音樂來源</h3><ul id="musList"></ul><h3 style="margin-top:16px">圖片來源</h3><p>本簡報照片皆取自 Wikimedia Commons，依各授權條款標示：</p><ul id="credList"></ul><p style="margin-top:12px;color:#8a5a3a">（點擊任意處關閉）</p></div></div>
+
+<script>
+/* ============ 圖片與授權 ============ */
+const IMG = {
+  c00:{a:"mushroomclinicaltrials.com",l:"CC BY 2.0",u:"https://commons.wikimedia.org/wiki/File:Cordyceps_Militaris.jpg",pos:"center"},
+  c01:{a:"Matej Frančeškin",l:"CC BY 4.0",u:"https://commons.wikimedia.org/wiki/File:Cordyceps_militaris_452741553.jpg",pos:"50% 45%"},
+  c04:{a:"Fumikas Sagisavas",l:"CC0",u:"https://commons.wikimedia.org/wiki/File:Dried_cordyceps_militaris_(1).jpg",pos:"center"},
+  c05:{a:"Fumikas Sagisavas",l:"CC0",u:"https://commons.wikimedia.org/wiki/File:Dried_cordyceps_militaris.jpg",pos:"center"},
+  c06:{a:"Fumikas Sagisavas",l:"CC0",u:"https://commons.wikimedia.org/wiki/File:Fresh_cordyceps_militaris.jpg",pos:"center"},
+  c07:{a:"Antrodia",l:"CC BY-SA 3.0",u:"https://commons.wikimedia.org/wiki/File:Harilik_kedrist%C3%B5lvik_(Cordyceps_militaris)_Eestis.JPG",pos:"52% 50%"},
+  c08:{a:"François Nguyen",l:"CC BY 2.0",u:"https://commons.wikimedia.org/wiki/File:Jilin_Yongji_Cordyceps_militaris_(1).jpg",pos:"center"},
+  c10:{a:"François Nguyen",l:"CC BY 2.0",u:"https://commons.wikimedia.org/wiki/File:Jilin_Yongji_Cordyceps_militaris_(3).jpg",pos:"center"},
+  c11:{a:"Holger Krisp",l:"CC BY 3.0",u:"https://commons.wikimedia.org/wiki/File:Puppen-Kernkeule_Cordyceps_militaris.jpg",pos:"40% 50%"},
+  c13:{a:"LunarLight",l:"CC BY-SA 4.0",u:"https://commons.wikimedia.org/wiki/File:Wild_Cordyceps_militaris.jpg",pos:"45% 60%"}
+};
+
+/* ============ 原文資料（取自 20201027御養複方系列產品簡介） ============ */
+const CM = "採用優勢菌種 CM027(Cordyceps militaris)以無菌固體栽培之全株體(包含子實體、菌絲體、及少量孢子體)，複合維生素 A、D、E，加強原株含有之維生素群(富含維生素 B)、抗氧化物質 SOD、類胡蘿蔔素等，並且組合多項天然本草以強化其營養功能與吸收達到最佳化。其中蟲草的珍貴成份有蟲草素、蟲草多醣、蟲草多胜肽、蟲草微蛋白、核苷衍生物、胺基酸、維生素、微量元素…等。";
+const MAIN = "冬蟲夏草 CM027(Cordyceps militaris)蟲草粉";
+
+const CP = {t:"蟲草粉",s:1,l:["提高免疫力和造血功能","改善調節心腦系統","改善呼吸調節系統","降血脂、降血糖","補腎、護肝","健脾安神，協助神經衰弱治療","抗氧化、降低體內自由基","促進新陳代謝"]};
+const VA = {t:"維生素 A",s:1,l:["細胞生長與分化","胚胎發育、器官形成","增強免疫功能，抗呼吸系統感染","維持視力及視覺發展","保護皮膚以及組織","抗癌","協助甲亢等疾病治療"]};
+const VD = {t:"維生素 D",s:1,l:["降低心血管疾病發生機率","降低罹癌風險","降低認知障礙及阿茲海默症機率","降低糖尿病風險","改善睡眠障礙、消除疲勞","增加免疫、預防感冒","改善男性性功能障礙","幫助鈣質吸收，預防骨質疏鬆","預防肌肉病變"]};
+const VE = {t:"維生素 E",s:1,l:["抗氧化","增加免疫","抗凝血","預防退化性疾病","抗老化，抗疲勞","緩解慢性阻塞性肺病(COPD)","保護呼吸系統","保護皮膚","維護視力"]};
+const GT = {t:"綠茶萃取物",solo:2,split:1,d:["綠茶是當今茶飲中消費量最大的種類，又稱不發酵茶，是茶葉摘取後經過殺青（一種加熱過程）、揉捻、乾燥等工藝所製成的茶葉，由於未經發酵，因此能保留了茶葉內的多種茶多酚及維生素。","綠茶以茶湯碧綠，綠葉飄逸而聞名，而其中最具功效的就屬兒茶素（Catechin），也是茶湯中澀味的主要來源，飲用綠茶時不只是精神上的享受，更能保健防病除了具有優異的抗氧化效果，還能清除體內過多的有害自由基，具有預防癌症、心血管疾病、降體脂肪及延年益壽等多種功效。"],h:"功效:",l:["有益於心血管疾病","癌症預防","降低認知功能障礙風險","降低肝指數(針對非酒精性脂肪性肝病患者)","有益於第二型糖尿病","幫助減肥(特別是腹部脂肪)","延長壽命，降低死亡率"]};
+const ADE = [VA,VD,VE];
+
+const P = [
+{code:"CC01",name:"蟲草 DHA 膠囊",claim:"增進大腦細胞發育，穩定激素",img:"c01",
+ intro:["複合天然本草：磷脂醯絲胺酸、DHA 藻粉。天然補給營養，調整體質，健康維持。",CM],
+ comp:["磷脂醯絲胺酸","DHA 藻粉","維生素 A","維生素 D","維生素 E"],
+ slides:[[CP,
+   {t:"磷脂醯絲胺酸",l:["穩定神經細胞膜","活化腦細胞","幫助思緒清晰","熟齡期調整體質、健康維持","心情愉悅與幫助入睡"]},
+   {t:"DHA 藻粉",l:["有益胎兒腦部發展","降低早產率及其帶來的腦部傷害","預防及輔助治療癌症","預防老年黃斑變性","改善認知退化及預防失智症","抗發炎"]}],ADE]},
+
+{code:"CC02",name:"蟲草 Q10 膠囊",claim:"改善心血管功能，抗氧化",img:"c07",
+ intro:["複合天然本草：輔酶 Q10、魚油。調節生理機能促進新陳代謝，協同維生素 E 抗氧化作用，減少自由基產生，維持體內平衡。",CM],
+ comp:["Q10","魚油粉","維生素 A","維生素 D","維生素 E"],
+ slides:[[CP,
+   {t:"魚油",w:2.2,d:["魚油是從富含脂肪的魚類，例如：鯷魚、鯖魚、鯡魚、金槍魚、鮭魚等提取出來的油脂，大約 30％的魚油由 Omega-3 脂肪酸組成，剩下的 70％ 由其他脂肪組成。魚油比起植物來源的 Omega-3 更容易被人體轉換利用（如亞麻仁油中的 ALA 在人體中約只有 5-15%能轉換為 DHA+EPA）。"],h:"魚油的功效以及好處:",c2:1,
+    l:["維持心臟健康","治療精神疾病","幫助減肥","支持眼睛健康","減輕類風濕性關節炎症狀","維持皮膚健康","有助於嬰兒視力和手眼協調","減少肝臟脂肪","改善憂鬱症的症狀","改善兒童的注意力和多動症","改善老年人記憶力","改善哮喘症狀和過敏風險","改善骨骼健康"]}],
+  [{t:"Q10",solo:2,split:1,sr:"1.5fr 1fr",c2:1,d:["輔酶 Q10 (CoQ10)，又名輔酵素 Q10，是一種自然發生的輔酶，存在於所有物種的組織和細胞中，主要位於線粒體內膜中自行合成，一般僅少部分是通過飲食獲得。人體在正常情況下製造輔酶 Q10 時，其機轉相當複雜，涉及多種微量營養素的參與，特別是維他命 C 及維他命 B 群。","輔酶 Q10 存在於很多器官中，是一種很強的抗氧化劑，能減少自由基對粒線體的傷害，維持細胞的穩定與完整，是參與體內能量製造時電子傳遞的重要物質 (ATP 合成)，幾乎所有細胞中都包含輔酶 Q10，其中又以心臟的含量最多。","不過體內的輔酶 Q10 會隨著年紀增長而逐漸變少，一般在 20 歲時達到高峰，除了年紀外，飲食的均衡與否、藥物、感染與壓力等因素，也會加速輔酶 Q10 的流失。"],h:"目前已知功效如下:",
+    l:["改善體能活動相關疲勞","有益血管內皮功能","幫助減肥","改善疾病相關的疲勞","有益血糖控制","有益於偏頭痛","有益肌少症","改善發炎指標","有益心臟衰竭","有益男性不孕症","有益高血壓","有益多囊性卵巢綜合征","改善帕金森氏症"]}],ADE]},
+
+{code:"CC03",name:"蟲草舒活膠囊",claim:"暢通血管，改善血液循環",img:"c11",
+ intro:["複合天然本草：紅麴萃取粉、納豆醱酵物(含納豆激酶)20000FU/g。補給天然營養調節生理機能，滋補強身，增強體力",CM],
+ comp:["紅麴萃取粉","納豆醱酵物(含納豆激酶)20000FU/g","紅蚯蚓萃取粉","維生素 A","維生素 D","維生素 E"],
+ slides:[[CP,
+   {t:"紅麴萃取粉",l:["降血糖調節","降血壓調節","降血脂肪調節","維持骨密度","改善老化症狀","預防肝損傷"]},
+   {t:"納豆醱酵物",l:["預防血栓","預防高血壓，降血壓、抗氧化","減重","減緩幼兒濕疹","預防骨質疏鬆症","維持人體正常生理機能","抗菌"]}],
+  [{t:"紅蚯蚓萃取粉",d:["紅蚯蚓酵素（lumbrokinase），又稱地龍酵素、蚓激酶，是近期熱門的心血管保健成分，與納豆激酶類似，紅蚯蚓酵素也宣稱可降低血小板聚集，降解血栓，還能降低血液粘度，抑制凝塊的形成，因此廣泛應用於腦梗死、冠心病、肺心病、深靜脈血栓的溶栓治療研究。"],h:"經過實證的功效:",l:["有利缺血性中風的預防","有益肺血管血栓栓塞","有益於心絞痛改善"],solo:1}],ADE]},
+
+{code:"CC04",name:"蟲草纖素膠原粉末",claim:"幫助維持消化道機能，降低食慾",img:"c13",
+ intro:["複合天然本草：膠原蛋白、菊糖粉(異果寡糖)。運用膠原蛋白為人體細胞、組織構成物質，有助於組織的修復，養顏美容。同時配合膳食纖維可促進腸道蠕動。增加飽足感，營養補給維持青春美麗。","採用優勢菌種 CM027(Cordyceps militaris)以無菌固體栽培之全株體(包含子實體、菌絲體、及少量孢子體)，複合維生素 A、D、E，加強原株含有之維生素群(富含維生素 B)、抗氧化物質 SOD、類胡蘿蔔素等，使其強化營養功能強化與吸收達到最佳化。"],
+ comp:["難消化性麥芽糊精(專利)","菊糖粉","魚膠原蛋白粉(專利)","乳糖醇","維生素 A","維生素 D","維生素 E"],
+ slides:[[CP,
+   {t:"難消化性麥芽糊精(專利)",w:1.6,d:["難消化性麥芽糊精是一種白色無味的粉末，常用於食品中做為機能性食品原料使用，是水溶性膳食纖維的一種。它的結構具有可被人體消化分解的 α-1,4 及 α-1,6 澱粉結構，和無法被人體消化分解的 α-1,2、β-1,2 及 β-1,3 纖維結構，易溶於水，但不易被消化酵素分解，所以具有水溶性膳食纖維的作用，可做為腸道好菌的食物，能夠改變細菌叢生態，具有使排便順暢的功效。"],h:"功效:",l:["調整腸道機能","調節血糖","降低膽固醇","減少中性脂肪"]}],
+  [{t:"菊糖粉",w:2.6,d:["菊糖是一種天然的多醣體，許多植物中都含有這種物質，包含大蒜、牛蒡、蘆筍、韭菜、小麥、洋蔥等等，產業上主要來自菊苣根部的萃取，通常添加在食品裡，以增加膳食纖維。它有幾個好處："],
+    l:["增加腸道好菌：菊糖雖然無法被人體消化，卻能被腸道益菌分解利用。增加好菌數，抑制壞菌生長，增強腸道免疫力，是一種「益生質」。","控制血糖：菊糖具有減緩消化作用的效果，比較不會引起血糖的劇烈變化。","改善便秘：菊糖本身不會被消化，和纖維素一樣具有促進腸胃蠕動，防止便秘的效果。","健康減重：菊糖能夠減慢胃排空食物的速度，降低食慾，減少食量，達到減肥的效果。","促進吸收鈣質：菊糖本身就是一種天然的果寡糖，能提高人體對鈣和鎂的吸收功能，能預防骨質疏鬆。","降低膽固醇：部分研究指出菊糖可能有降低膽固醇的效果，不過這還有待進一步的研究。"]},
+   {t:"乳糖醇",d:["乳糖醇（英語：Lactitol）是一種糖醇，可當作食品添加劑或瀉藥。其具有相對於蔗糖大約 40%的甜度，熱量也不高，可以在食品中作為甜味劑代替砂糖，或是乳化劑及增稠劑，在醫療方面亦能當作瀉藥。"],h:"功效:",l:["能被益生菌利用，進而維護大腸健康","刺激腸胃蠕動，治療或預防便祕","改善輕微的高膽固醇血症與大腸激躁症"]}],
+  [{t:"魚膠原蛋白粉(專利)",solo:2,split:1,sr:"1.7fr 1fr",d:["魚類膠原蛋白組成結構與人體最接近，最容易被身體組織吸收，吸收率也最高。","膠原蛋白（Collagen）是動物身上最豐富的結構型蛋白（由多種氨基酸所形成，而 Collagen 這個文字源於希臘文 kólla，意指膠水）。在人類身上，膠原蛋白佔有總蛋白質量的三分之一，皮膚結構中更佔有四分之三，是細胞外基質及結締組織（如軟骨、硬骨、血管、角膜）中最重要的物質。","膠原蛋白除了賦予皮膚韌性、彈性及防水功能，它還是韌帶、肌腱、關節中的重要成分，若缺乏或製造不足將引發各種功能上的退化。身體製造膠原蛋白的能力會受年紀及生活方式影響，當年紀增長或生活習慣欠佳，身體的膠原蛋白會逐漸流失，出現各種外在及內在的改變。"],h:"功效:",l:["有益肌膚老化現象","有益骨質疏鬆","改善橘皮組織","有益肌少症","有益骨關節炎"]}],ADE]},
+
+{code:"CC05",name:"草茶芬膠囊",claim:"幫助體脂肪代謝，抗氧化",img:"c06",
+ intro:["維生素 E 具抗氧化作用，有助於減少自由基的產生。藉由天然的營養補給調整生理機能，維持健康。",CM],
+ comp:["綠茶萃取物（含 EGCG）","綜合乳酸菌(ABS 乳酸菌)","牛初乳","維生素 A","維生素 D","維生素 E"],
+ slides:[[CP,
+   {t:"綜合乳酸菌(ABS 乳酸菌)",l:["活化免疫系統","減緩過敏","促進腸道健康"]},
+   {t:"牛初乳粉",w:1.6,c2:1,l:["抗微生物感染、改善病毒感染","抗氧化","促進腸道好菌生長","調節鐵質代謝","幫助免疫調節","參與血糖、膽固醇的調節","改善脂肪及蛋白質的代謝","抗老化","預防高血壓、心血管疾病","促進組織的傷口癒合"]}],
+  [GT],ADE]},
+
+{code:"CC06",name:"五仙子膠囊",claim:"增加腦血含量，抗氧化、抗疲勞",img:"c01",
+ intro:["複合天然本草：紅景天、刺五加、靈芝、沙棘。天然的營養補給維持健康，滋補強身，增強體力。",CM],
+ comp:["紅景天","刺五加","沙棘","靈芝","維生素 A","維生素 D","維生素 E"],
+ slides:[[CP,
+   {t:"紅景天",l:["消除壓力，加強抗壓性","增加精力，讓運動更持久","預防高山症","改善憂鬱症","有助於減肥，幫助燃燒腹部脂肪","減少運動後乳酸堆積及肌肉受損"]},
+   {t:"沙棘",d:["沙棘（Sea buckthorn）被用作藥用和營養用途有百年歷史，用於治療放射損傷、創傷、癌症、心血管疾病、消化道疾病和免疫系統疾病。"],h:"功效",l:["降低發炎指標 C 反應蛋白","有益乾癬","有益異位性皮膚炎","有益心血管疾病","有益陰道萎縮","有益乾眼症","有益肝纖維化"]}],
+  [{t:"刺五加",solo:2,split:1,d:["刺五加含有人蔘皂苷，又稱為刺五加苷，可使身體平衡並抵消壓力的影響。此外，刺五加還有其他許多益處，用於治療頭痛、背痛、使月經正常化、緩解分娩、對抗更年期間的熱潮紅、幫助減肥和改善皮膚健康。"],h:"功效:",l:["緩解普通感冒的症狀","增加能量、減少疲勞","改善認知功能","加強運動鍛煉","癒合傷口和預防潰瘍","改善低血壓","減少骨質疏鬆症","減輕肺部相關疾病症狀","預防和修復神經損傷"]}],
+  [{t:"靈芝",solo:2,split:1,sr:"1fr 1.8fr",d:["靈芝被尊為上藥之王的主要原因在於它蘊含豐富多樣的生理活性成分，能發揮複方的多重功效，且長久服用無副作用。通常植物中草藥或菇類，含有幾種活性成分就很了不起了，但現代醫藥研究證實靈芝的子實體，含有超過百種不同種類的活性成分，其中包含了三萜類、多糖體、核酸類化合物、小分子蛋白質等……"],h:"功效",
+    l:["抗腫瘤與癌細胞：靈芝具有調節和激活免疫機制的功效，能提高人體的免疫能力，增強患者自身的抗癌能力。","提升調節免疫力：提高巨噬細胞的吞噬指數與吞噬百分率，增強自體免疫功能；真菌免疫調節蛋白具有雙向調解免疫力活性。","心臟血管循環疾病：動物實驗和臨床試驗均顯示，靈芝可有效擴張冠狀動脈，增加冠脈血流量，改善心肌微循環，增強心肌氧和能量的供給，因此，對心肌缺血具有保護作用。","促進新陳代謝：研究顯示，靈芝具有保護肝臟、協助肝臟解毒、加強代謝等作用。","抗衰老:靈芝所含的多糖、多肽等有著明顯的延緩衰老功效，主要是透過促進和調整免疫功能、調節代謝平衡，促進核酸和蛋白質的合成、抗自由基作用、促進細胞核內 DNA 合成能力等機轉來達到抗衰老的效果。"]}],ADE]},
+
+{code:"CC07",name:"泰眠胜肽膠囊",claim:"助眠(抗憂鬱)",img:"c07",
+ intro:["運用專利酵母萃取胜肽，以天然的營養補給，調整體質幫助入睡",CM+"運用專利酵母萃取胜肽，以天然的營養補給調整體質幫助入睡。"],
+ comp:["L-色胺酸","麩胺酸發酵物(含 GABA)","紅藻鈣粉","維生素 A","維生素 D","維生素 E"],
+ slides:[[CP,
+   {t:"L-色胺酸",l:["為人體不能合成的必需胺基酸，為合成神經傳導物質「血清素」的原料","血清素具有改善睡眠品質以及改善憂鬱症的功能"]},
+   {t:"麩胺酸發酵物(含 GABA)",w:1.2,d:["是一種天然非蛋白質氨基酸，又稱天然的神經安定劑。常見作用如下:"],l:["產生鎮靜，抗憂鬱，改善睡眠與減緩焦慮等作用","促進生長激素的分泌","減少酒癮的發作","改善高血壓及癲癇等病症"]}],ADE]},
+
+{code:"CC08",name:"纖體胜肽膠囊",claim:"幫助維持消化道機能，降低食慾",img:"c11",
+ intro:["運用專利酵母萃取胜肽複合天然本草：綠茶、武靴騰、仙人掌。以天然的營養補給促進新陳代謝，幫助維持消化道機能，維持健康青春美麗。",CM],
+ comp:["酵母萃取物(酵母多肽)(專利)","綠茶萃取物","武靴藤萃取物","仙人掌萃取物","維生素 A","維生素 D","維生素 E"],
+ slides:[[CP,
+   {t:"酵母萃取物",w:1.4,d:["酵母提取物來源於天然酵母，富含小分子的氨基酸、肽、核苷酸、維生素等天然活性成分。氨基酸有利於膠原蛋白的合成，可使老化的皮膚恢復彈性，延緩皮膚衰老; 核酸及核苷酸具有促進新陳代謝、提高蛋白質合成速度等作用，可增強免疫機能、提高皮膚抗自由基能力; 各種寡肽類成分可以作為信號分子，參與和酪氨酸酶競爭，從而抑制黑素的生成。"]}],
+  [GT],
+  [{t:"武靴藤萃取物",d:["武靴葉（Gymnema sylvestre），又稱匙羹藤，有著深厚的歷史淵源，是一種用於民間，阿育吠陀和順勢療法醫學系統的抗糖尿病植物主要藥用部位為葉子及根部，一般認為具有：抗病毒、利尿、抗過敏、低血糖、降血脂、鎮痛和抗風濕等功效。"],h:"功效:",l:["降低對甜味的味覺感知","有益第 2 型糖尿病","改善高血脂狀態","有益代謝症候群"]},
+   {t:"仙人掌萃取物",w:2,l:["減肥作用: 仙人掌中含有一種叫丙醇二酸的物質，可以對脂肪的增長有抑制作用；仙人掌含三萜皂甙，三萜是人體所必需的物質，它們能直接調節人體分泌機能和調節脂肪酶的活性，促進多餘脂肪迅速分解，並能有效的防止脂肪在腸道吸收，抑制脂肪在肝內合成，對抗膽固醇在血管內壁的沉積，循序漸進的減輕體重。不但不損傷元氣，反而補充營養，增加人體精力；蘋果酸是消食健胃的，並能促進胃腸蠕動，這樣就起到了潤腸通便的功能。","降血糖作用：仙人掌含多種黃酮類物質，如槲皮素-3-葡萄甙等，有明顯的降血糖作用，能有效地改善 II 型糖尿病患者的糖代謝。仙人掌提取物中含有一種叫丙醇二酸的物質，可以對脂肪的增長有抑制作用。仙人掌中還含多種黃酮類物質，有明顯的降血糖作用，能有效地改善 II 型糖尿病患者的糖代謝。","抑菌和消炎作用：仙人掌對金黃色葡萄球菌、變形桿菌、大腸桿菌、枯草芽孢桿菌、蠟狀芽孢桿菌有抑制作用。"]}]]}
+];
+
+/* ============ 文字雲關鍵字（大小依原文出現次數自動計算） ============ */
+const KW = [
+ // 成分
+ ["蟲草粉","i",["蟲草粉"]],["CM027","i",["CM027"]],["維生素 A","i",["維生素 A"]],["維生素 D","i",["維生素 D"]],["維生素 E","i",["維生素 E"]],
+ ["磷脂醯絲胺酸","i",["磷脂醯絲胺酸"]],["DHA","i",["DHA"]],["輔酶 Q10","i",["Q10"]],["魚油","i",["魚油"]],["紅麴","i",["紅麴"]],
+ ["納豆激酶","i",["納豆"]],["紅蚯蚓","i",["紅蚯蚓"]],["膠原蛋白","i",["膠原蛋白"]],["菊糖","i",["菊糖"]],["麥芽糊精","i",["麥芽糊精"]],
+ ["乳糖醇","i",["乳糖醇"]],["綠茶","i",["綠茶"]],["乳酸菌","i",["乳酸菌"]],["牛初乳","i",["牛初乳"]],["紅景天","i",["紅景天"]],
+ ["刺五加","i",["刺五加"]],["沙棘","i",["沙棘"]],["靈芝","i",["靈芝"]],["L-色胺酸","i",["色胺酸"]],["GABA","i",["GABA"]],
+ ["紅藻鈣","i",["紅藻鈣"]],["酵母胜肽","i",["酵母"]],["武靴藤","i",["武靴藤","武靴騰","武靴葉"]],["仙人掌","i",["仙人掌"]],
+ // 功效
+ ["抗氧化","e",["抗氧化"]],["免疫","e",["免疫"]],["心血管","e",["心血管","心臟","心腦","冠心","心絞痛","心肌"]],
+ ["血糖","e",["血糖","糖尿病"]],["血脂","e",["血脂","膽固醇","中性脂肪"]],["血壓","e",["血壓"]],["血栓","e",["血栓","抗凝血"]],
+ ["減重","e",["減肥","減重","體脂肪","燃燒腹部脂肪","食慾"]],["睡眠","e",["睡眠","入睡","助眠"]],["憂鬱","e",["憂鬱"]],
+ ["腸道","e",["腸道","便秘","便祕","消化道","排便","腸胃"]],["疲勞","e",["疲勞"]],["骨質","e",["骨質","骨密度","鈣質","骨骼"]],
+ ["認知","e",["認知","失智","腦細胞","記憶","阿茲海默"]],["新陳代謝","e",["新陳代謝"]],["抗老化","e",["老化","衰老"]],
+ ["皮膚","e",["皮膚","肌膚"]],["視力","e",["視力","黃斑","眼睛","乾眼"]],["抗發炎","e",["發炎","消炎"]],["自由基","e",["自由基"]],
+ ["護肝","e",["護肝","肝損傷","肝指數","肝臟","肝纖維化","脂肪性肝"]],["呼吸系統","e",["呼吸","肺"]],["抗壓","e",["壓力","抗壓","焦慮"]],
+ ["抗癌","e",["癌"]],["造血","e",["造血"]],["肌少症","e",["肌少症","肌肉"]]
+];
+
+/* ============ 建立投影片 ============ */
+const stage = document.getElementById('stage');
+const slides = [];   // {el, credit}
+const productStart = {}; // code -> slide index
+const esc = s => s;
+let anim = 0;
+const A = (html) => `<div class="anim" style="--d:${anim++}">${html}</div>`;
+
+function addSlide(cls, img, washCls, inner, opts={}){
+  const el = document.createElement('section');
+  el.className = 'slide ' + cls + (washCls==='dark'||washCls==='ember' ? ' dark-slide':'');
+  const im = IMG[img];
+  el.innerHTML = `<div class="bg" style="background-image:url(images/${img}.jpg);background-position:${im.pos}"></div>
+    <div class="wash ${washCls}"></div>${inner}
+    <div class="foot"><span>御養複方系列產品簡介${opts.label? '　｜　'+opts.label:''}</span></div>`;
+  stage.appendChild(el); slides.push(el); anim = 0; return el;
+}
+
+function cardHTML(c){
+  const tag = c.s ? '<em>共同成分</em>' : '';
+  let d = '', l = '';
+  (c.d||[]).forEach(p=> d += `<p>${p}</p>`);
+  if (c.h) l += `<div class="lh">${c.h}</div>`;
+  if (c.l) l += `<ol class="${c.c2?'c2':''}">${c.l.map(x=>`<li>${x}</li>`).join('')}</ol>`;
+  const b = c.split ? `<div class="sp" style="grid-template-columns:${c.sr||'1fr 1fr'}"><div>${d}</div><div>${l}</div></div>` : d + l;
+  return `<div class="card anim" style="--d:${anim++};flex:${c.w||1}${c.solo===1?';max-width:1100px':''}"><div class="ch${c.s?' shared':''}">${c.t}${tag}</div><div class="cb fitme${c.split?' splitcb':''}">${b}</div></div>`;
+}
+
+/* 1. 封面 */
+anim=0;
+addSlide('cover','c00','dark',`<div class="content">
+  ${A('<div class="series">CORDYCEPS MILITARIS · CM027</div>')}
+  ${A('<h1>御養複方</h1>')}
+  ${A('<h2>系列產品簡介</h2>')}
+  ${A('<div class="line"></div>')}
+  ${A('<div class="sub">以 CM027 蟲草粉為基底　複合天然本草<br>CC01 – CC08　共八項產品</div>')}
+  ${A('<div class="date">2020 . 10 . 27</div>')}
+</div>`);
+
+/* 2. 系列總覽 */
+anim=0;
+addSlide('overview','c06','warm',`<div class="content">
+  ${A('<div class="kicker">PRODUCT LINEUP</div><div class="title">系列總覽<small>八項產品・主要訴求</small></div><div class="rule"></div>')}
+  <div class="grid8">${P.map(p=>`<div class="pcard anim" style="--d:${anim++}" data-go="${p.code}"><div class="c">${p.code}</div><div class="n">${p.name}</div><div class="k"><b>主要訴求</b>${p.claim}</div></div>`).join('')}</div>
+</div>`,{label:'系列總覽'});
+
+/* 3. 共同基底 CM027 */
+anim=0;
+addSlide('base','c08','warm',`<div class="content">
+  ${A('<div class="kicker">COMMON BASE</div><div class="title">共同基底<small>主要成分：'+MAIN+'</small></div><div class="rule"></div>')}
+  <div class="two">
+    <div class="panel facts anim" style="--d:${anim++}">
+      <div class="fact"><div class="lab">菌　種</div><div class="val">優勢菌種 CM027 (<i>Cordyceps militaris</i>)</div></div>
+      <div class="fact"><div class="lab">栽　培</div><div class="val">無菌固體栽培之全株體<br>（包含子實體、菌絲體、及少量孢子體）</div></div>
+      <div class="fact"><div class="lab">複　合</div><div class="val">維生素 A、D、E，加強原株含有之維生素群(富含維生素 B)、抗氧化物質 SOD、類胡蘿蔔素等</div></div>
+      <div class="fact"><div class="lab">珍貴成份</div><div class="val"><div class="chips">${["蟲草素","蟲草多醣","蟲草多胜肽","蟲草微蛋白","核苷衍生物","胺基酸","維生素","微量元素"].map(x=>`<span class="chip">${x}</span>`).join('')}</div></div></div>
+    </div>
+    <div class="cards" style="flex:1;height:auto">${cardHTML(CP)}</div>
+  </div>
+</div>`,{label:'共同基底'});
+
+/* 4. 各產品 */
+const contentBgs = ['c04','c08','c05','c10','c06'];
+let cbi = 0;
+P.forEach(p=>{
+  anim=0;
+  productStart[p.code] = slides.length;
+  const comp = `<span class="chip main">${MAIN}</span>` + p.comp.map(x=>`<span class="chip">${x}</span>`).join('');
+  addSlide('pintro',p.img,'ember',`<div class="photo" style="background-image:url(images/${p.img}.jpg);background-position:${IMG[p.img].pos}"></div>
+    <div class="left">
+      ${A(`<div class="code">${p.code}</div><h2>${p.name}</h2>`)}
+      ${A(`<div class="claim"><span>主要訴求</span>${p.claim}</div>`)}
+      <div class="fit fitme anim" style="--d:${anim++}">
+        <div class="sec"><h4>產品介紹</h4>${p.intro.map(x=>`<p>${x}</p>`).join('')}</div>
+        <div class="sec"><h4>主要成分 ＋ 複合成分</h4><div class="chips">${comp}</div></div>
+      </div>
+    </div>`,{label:p.code+' '+p.name});
+  p.slides.forEach((cards,k)=>{
+    anim=0;
+    const bg = contentBgs[cbi++ % contentBgs.length];
+    const isADE = cards===ADE;
+    addSlide('ingr',bg,'warm',`<div class="content">
+      ${A(`<div class="kicker"><span class="code">${p.code}</span>${p.name}</div><div class="title">成分功效<small>${isADE?'維生素 A・D・E':cards.map(c=>c.t.replace(/\(.*?\)/g,'')).join('・')}　${k+1} / ${p.slides.length}</small></div><div class="rule"></div>`)}
+      <div class="cards" style="${cards.length===1?'justify-content:center':''}">${cards.map(cardHTML).join('')}</div>
+    </div>`,{label:p.code+' '+p.name});
+  });
+});
+
+/* 5. 對照表 */
+anim=0;
+addSlide('table','c05','warm',`<div class="content">
+  ${A('<div class="kicker">COMPARISON</div><div class="title">產品對照表<small>點選列可跳至該產品</small></div><div class="rule"></div>')}
+  <div class="anim" style="--d:${anim++}"><table class="tbl"><thead><tr><th>編號</th><th>品名</th><th>主要訴求</th><th>複合成分（另含維生素 A、D、E）</th></tr></thead>
+  <tbody>${P.map(p=>`<tr data-go="${p.code}"><td class="code">${p.code}</td><td class="nm">${p.name}</td><td class="cl">${p.claim}</td><td>${p.comp.filter(x=>!/^維生素/.test(x)).join('、')}</td></tr>`).join('')}</tbody></table></div>
+</div>`,{label:'產品對照表'});
+
+/* 6. 互動文字雲 */
+anim=0;
+addSlide('cloudslide','c10','warm',`<div class="content" style="padding-top:50px">
+  ${A('<div class="kicker">WORD CLOUD</div><div class="title">成分 × 功效 文字雲<small>字越大，代表在八項產品中被提及越多次</small></div><div class="rule" style="margin-bottom:18px"></div>')}
+  <div class="cloudbar anim" style="--d:${anim++}">
+    <button class="btn on" data-f="all">全部</button><button class="btn" data-f="i">成分</button><button class="btn" data-f="e">功效</button>
+    <button class="btn" id="reshuffle">↻ 重新排列</button><span style="color:#8a5a3a;font-size:16px;margin-left:8px">點選關鍵字，查看相關產品</span>
+    <div class="legend"><span><i style="background:#b4521a"></i>成分</span><span><i style="background:#d99a3a"></i>功效</span></div>
+  </div>
+  <div id="cloud" class="anim" style="--d:${anim++}">
+    <div id="info"><button class="x">×</button><h3></h3><div class="st"></div><div class="pl"></div></div>
+  </div>
+</div>`,{label:'互動文字雲'});
+
+/* ============ 文字雲 ============ */
+const productText = P.map(p=>{
+  const all=[p.name,p.claim,...p.intro,MAIN,...p.comp];
+  p.slides.forEach(cs=>cs.forEach(c=>{all.push(c.t,...(c.d||[]),...(c.l||[]))}));
+  return all.join('\n');
+});
+const words = KW.map(([label,type,alias])=>{
+  const per = productText.map(t=>alias.reduce((s,a)=>s+(t.split(a).length-1),0));
+  return {label,type,count:per.reduce((a,b)=>a+b,0),prods:P.filter((p,i)=>per[i]>0)};
+}).filter(w=>w.count>0).sort((a,b)=>b.count-a.count);
+
+const cloud = document.getElementById('cloud');
+const info = document.getElementById('info');
+const CW=1440, CH=610;
+const COL = {i:['#b4521a','#8a3b12','#d2691e','#c0451a'], e:['#d99a3a','#a0602a','#e08a2e','#7a4a1c']};
+const maxC = words[0].count, minC = words[words.length-1].count;
+const meas = document.createElement('canvas').getContext('2d');
+words.forEach((w,i)=>{
+  const t = (Math.sqrt(w.count)-Math.sqrt(minC))/(Math.sqrt(maxC)-Math.sqrt(minC)||1);
+  w.size = Math.round(22 + t*74);
+  w.color = COL[w.type][i % 4];
+  const el = document.createElement('span');
+  el.className='w'; el.textContent=w.label;
+  el.style.fontSize=w.size+'px'; el.style.color=w.color;
+  el.style.fontFamily = w.type==='i' ? 'var(--ming)' : 'var(--sans)';
+  if (w.type==='i') el.style.webkitTextStroke = '.03em currentColor';
+  el.title = `${w.label}：提及 ${w.count} 次`;
+  el.onclick = (ev)=>{ev.stopPropagation();select(w)};
+  cloud.appendChild(el); w.el=el;
+});
+let filter='all';
+function layout(randomize){
+  const placed=[];
+  const vis = words.filter(w=>filter==='all'||w.type===filter);
+  words.forEach(w=>{ if(!vis.includes(w)){ w.el.style.opacity=0; w.el.style.pointerEvents='none'; }});
+  const a0 = randomize ? Math.random()*Math.PI*2 : 0;
+  vis.forEach((w,idx)=>{
+    let size = w.size, ok=false, x=0,y=0,bw=0,bh=0;
+    for(let tries=0; tries<6 && !ok; tries++){
+      meas.font = `700 ${size}px ${w.type==='i'?'PMingLiU,新細明體':'Microsoft JhengHei'}`;
+      bw = meas.measureText(w.label).width + 24; bh = size*1.08 + 6;
+      const dir = (idx%2? 1:-1);
+      for(let s=0; s<4000; s++){
+        const ang = a0 + s*0.18*dir, r = 2.2*Math.sqrt(s)*6;
+        x = CW/2 + r*Math.cos(ang)*1.55 - bw/2;
+        y = CH/2 + r*Math.sin(ang)*0.75 - bh/2;
+        if (x<10||y<10||x+bw>CW-10||y+bh>CH-10) continue;
+        if (!placed.some(p=> x<p.x+p.w && x+bw>p.x && y<p.y+p.h && y+bh>p.y)){ ok=true; break; }
+      }
+      if(!ok) size*=0.85;
+    }
+    if(!ok){ w.el.style.opacity=0; return; }
+    placed.push({x,y,w:bw,h:bh});
+    w.el.style.fontSize = size+'px';
+    w.el.style.opacity = 1; w.el.style.pointerEvents='auto';
+    w.el.style.transitionDelay = (idx*18)+'ms';
+    w.el.style.transform = `translate(${x+7}px,${y+3}px)`;
+  });
+}
+function burst(){ // 從中心綻放
+  words.forEach(w=>{w.el.style.transitionDelay='0ms';w.el.style.transform=`translate(${CW/2-40}px,${CH/2-20}px) scale(.1)`;w.el.style.opacity=0;});
+  setTimeout(()=>layout(false), 60);
+}
+function select(w){
+  words.forEach(o=>{o.el.classList.toggle('dim',o!==w); o.el.classList.toggle('sel',o===w);});
+  info.querySelector('h3').innerHTML = `${w.label}<span class="tp">${w.type==='i'?'成分':'功效'}</span>`;
+  info.querySelector('.st').textContent = `出現在 ${w.prods.length} 項產品 · 原文共提及 ${w.count} 次`;
+  info.querySelector('.pl').innerHTML = w.prods.map(p=>`<button data-go="${p.code}">${p.code} ${p.name}</button>`).join('');
+  info.classList.add('show');
+}
+function unselect(){ words.forEach(o=>o.el.classList.remove('dim','sel')); info.classList.remove('show'); }
+cloud.addEventListener('click', unselect);
+info.addEventListener('click', e=>e.stopPropagation());
+info.querySelector('.x').onclick = unselect;
+document.querySelectorAll('.cloudbar [data-f]').forEach(b=>b.onclick=()=>{
+  document.querySelectorAll('.cloudbar [data-f]').forEach(x=>x.classList.remove('on')); b.classList.add('on');
+  filter=b.dataset.f; unselect(); layout(false);
+});
+document.getElementById('reshuffle').onclick=()=>{unselect(); layout(true);};
+
+/* ============ 自動縮放文字以符合版面 ============ */
+function fitAll(){
+  document.querySelectorAll('.fitme').forEach(el=>{
+    let s = el.classList.contains('fit') ? 27 : 30;
+    el.style.fontSize = s+'px';
+    while (el.scrollHeight > el.clientHeight + 1 && s > 12){ s -= 0.5; el.style.fontSize = s+'px'; }
+  });
+}
+
+/* ============ 導覽 ============ */
+let cur = 0;
+const prog = document.getElementById('progress');
+function go(i){
+  i = Math.max(0, Math.min(slides.length-1, i));
+  slides[cur].classList.remove('active');
+  // 重新觸發動畫
+  const s = slides[i]; s.classList.remove('active'); void s.offsetWidth; s.classList.add('active');
+  cur = i; prog.style.width = ((i+1)/slides.length*100)+'%';
+  try { history.replaceState(null,'','#'+(i+1)); } catch(e) {}
+  if (s.classList.contains('cloudslide')) { unselect(); setTimeout(burst, 350); }
+}
+document.addEventListener('click', e=>{
+  const g = e.target.closest('[data-go]');
+  if (g) { e.stopPropagation(); go(productStart[g.dataset.go]); }
+});
+document.addEventListener('keydown', e=>{
+  if (['ArrowRight','PageDown',' ','Enter'].includes(e.key)) { e.preventDefault(); go(cur+1); }
+  else if (['ArrowLeft','PageUp','Backspace'].includes(e.key)) { e.preventDefault(); go(cur-1); }
+  else if (e.key==='Home') go(0);
+  else if (e.key==='End') go(slides.length-1);
+  else if (e.key==='f'||e.key==='F') toggleFull();
+  else if (e.key==='m'||e.key==='M') toggleMusic();
+  else if (e.key==='i'||e.key==='I') document.getElementById('credits').classList.toggle('show');
+  else if (e.key==='Escape') document.getElementById('credits').classList.remove('show');
+});
+let tx=null;
+document.addEventListener('touchstart',e=>tx=e.touches[0].clientX,{passive:true});
+document.addEventListener('touchend',e=>{ if(tx===null)return; const dx=e.changedTouches[0].clientX-tx; if(Math.abs(dx)>60) go(cur+(dx<0?1:-1)); tx=null;});
+function toggleFull(){ try { const p = document.fullscreenElement ? document.exitFullscreen() : document.documentElement.requestFullscreen(); if (p && p.catch) p.catch(()=>{}); } catch(e) {} }
+document.getElementById('bPrev').onclick=()=>go(cur-1);
+document.getElementById('bNext').onclick=()=>go(cur+1);
+document.getElementById('bFull').onclick=toggleFull;
+const cr = document.getElementById('credits');
+document.getElementById('credList').innerHTML = Object.entries(IMG).map(([k,v])=>`<li>${k}.jpg — ${v.a}，${v.l}，<a href="${v.u}" target="_blank">${decodeURIComponent(v.u.split('File:')[1]).replace(/_/g,' ')}</a></li>`).join('');
+document.getElementById('bCred').onclick=()=>cr.classList.add('show');
+
+/* ============ 背景音樂 ============ */
+const TRACKS = [
+  {src:"music/healing.mp3", name:"Healing（冥想療癒）", a:"Kevin MacLeod (incompetech.com)", l:"CC BY 3.0", u:"https://commons.wikimedia.org/wiki/File:Healing_(ISRC_USUAN1200048).mp3", note:""},
+  {src:"music/inner-light.mp3", name:"Inner Light（靜心）", a:"Kevin MacLeod (incompetech.com)", l:"CC BY 3.0", u:"https://commons.wikimedia.org/wiki/File:Kevin_MacLeod_-_Inner_Light.ogg", note:""}
+];
+document.getElementById('musList').innerHTML = TRACKS.map(t=>`<li>${t.name} — ${t.a}，${t.l}${t.note?'，'+t.note:''}，<a href="${t.u}" target="_blank">Wikimedia Commons</a></li>`).join('');
+const bgm = document.getElementById('bgm'), mBox = document.getElementById('music'),
+      mPlay = document.getElementById('mPlay'), mLabel = document.getElementById('mLabel');
+let tIdx = 0, fadeT = null, userPaused = false;
+const VOL = 0.35;
+function loadTrack(i){ tIdx = (i + TRACKS.length) % TRACKS.length; bgm.src = TRACKS[tIdx].src; mLabel.textContent = TRACKS[tIdx].name; }
+function fadeTo(target, ms, done){
+  clearInterval(fadeT); const start = bgm.volume, t0 = Date.now();
+  fadeT = setInterval(()=>{ const k = Math.min(1,(Date.now()-t0)/ms); bgm.volume = start + (target-start)*k; if(k>=1){clearInterval(fadeT); done&&done();} }, 40);
+}
+function playMusic(){
+  userPaused = false;
+  if (!bgm.src) loadTrack(0);
+  bgm.volume = VOL;
+  const p = bgm.play();
+  const ok = ()=>{ mBox.classList.add('playing'); mPlay.textContent='❚❚'; mLabel.textContent = TRACKS[tIdx].name; bgm.volume = VOL; };
+  if (p && p.then) p.then(ok).catch(()=>{ mLabel.textContent='瀏覽器未允許播放'; }); else ok();
+}
+function pauseMusic(){ userPaused = true; fadeTo(0, 500, ()=>bgm.pause()); mBox.classList.remove('playing'); mPlay.textContent='♪'; }
+function toggleMusic(){ (bgm.paused || !mBox.classList.contains('playing')) ? playMusic() : pauseMusic(); }
+mPlay.onclick = toggleMusic;
+document.getElementById('mNext').onclick = ()=>{ const was = mBox.classList.contains('playing'); loadTrack(tIdx+1); if (was) playMusic(); };
+bgm.addEventListener('ended', ()=>{ loadTrack(tIdx+1); playMusic(); });
+tIdx = 0;
+/* 開啟即嘗試播放；若瀏覽器擋自動播放，就在第一次點擊／按鍵／觸控時立刻開始 */
+function autoStart(){
+  if (userPaused || mBox.classList.contains('playing')) return;
+  const p = bgm.play();
+  const ok = ()=>{ bgm.volume = VOL; mBox.classList.add('playing'); mPlay.textContent='❚❚'; mLabel.textContent = TRACKS[tIdx].name; cleanup(); };
+  if (p && p.then) p.then(ok).catch(()=>{}); else ok();
+}
+const EVTS = ['pointerdown','keydown','touchstart'];
+function onFirst(e){ if (e.target && e.target.closest && e.target.closest('#music')) return; if (e.type==='keydown' && (e.key==='m'||e.key==='M')) return; autoStart(); }
+function cleanup(){ EVTS.forEach(t=>document.removeEventListener(t, onFirst, true)); }
+EVTS.forEach(t=>document.addEventListener(t, onFirst, true));
+autoStart();
+cr.onclick=()=>cr.classList.remove('show');
+
+function scale(){ const k=Math.min(innerWidth/1600, innerHeight/900); stage.style.transform=`scale(${k})`; }
+addEventListener('resize', scale); scale();
+
+fitAll();
+layout(false);
+const start = parseInt(location.hash.slice(1)) - 1;
+go(isNaN(start) ? 0 : start);
+</script>
+</body>
+</html>
