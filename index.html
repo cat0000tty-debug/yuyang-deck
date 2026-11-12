@@ -163,6 +163,90 @@ html,body{width:100%;height:100%;background:#1e0f06;overflow:hidden;font-family:
 #credits h3{font-family:var(--ming);font-weight:700;-webkit-text-stroke:.03em currentColor;font-size:28px;color:var(--brown);margin-bottom:10px}
 #credits li{margin-left:1.2em}
 #credits a{color:var(--burnt)}
+
+/* ================= 手機版（直式或小螢幕） ================= */
+body.mobile #viewport{display:block}
+body.mobile #stage{width:100%;height:100%;box-shadow:none;transform:none !important}
+body.mobile .content{padding:58px 18px 40px;overflow-y:auto;-webkit-overflow-scrolling:touch;overscroll-behavior:contain}
+body.mobile .foot,body.mobile #nav{display:none}
+body.mobile .kicker{font-size:12px;gap:8px}
+body.mobile .title{font-size:28px;margin-top:4px}
+body.mobile .title small{display:block;font-size:14px;margin:6px 0 0;line-height:1.5}
+body.mobile .rule{width:70px;height:4px;margin:10px 0 16px}
+body.mobile .cover .content{padding:0 26px;overflow:hidden;display:flex}
+body.mobile .cover .series{font-size:11px;letter-spacing:.22em}
+body.mobile .cover h1{font-size:54px;margin:12px 0 6px}
+body.mobile .cover h2{font-size:21px;letter-spacing:.2em}
+body.mobile .cover .line{margin:20px 0;width:140px}
+body.mobile .cover .sub{font-size:15px}
+body.mobile .cover .date{font-size:14px;margin-top:22px}
+body.mobile .grid8{grid-template-columns:1fr 1fr;gap:12px}
+body.mobile .pcard{min-height:0;padding:14px 12px;border-radius:14px}
+body.mobile .pcard .c{font-size:14px}
+body.mobile .pcard .n{font-size:19px;margin:4px 0 10px}
+body.mobile .pcard .k{font-size:13px;padding:8px 10px}
+body.mobile .pcard .k b{font-size:11px}
+body.mobile .two{flex-direction:column;height:auto;gap:16px}
+body.mobile .panel{padding:18px 16px;border-radius:16px}
+body.mobile .facts{gap:14px}
+body.mobile .fact{gap:12px}
+body.mobile .fact .lab{width:84px;font-size:14px;padding:6px 0}
+body.mobile .fact .val{font-size:15px;padding-top:3px}
+body.mobile .chip{font-size:13px;padding:4px 11px}
+body.mobile .cards{flex-direction:column;height:auto !important;gap:16px}
+body.mobile .card{flex:none !important;max-width:none !important;border-radius:14px}
+body.mobile .card .ch{font-size:21px;padding:12px 16px}
+body.mobile .card .ch em{font-size:11px}
+body.mobile .card .cb{overflow:visible;padding:14px 16px 16px}
+body.mobile .fitme{font-size:15px !important}
+body.mobile .card ol.c2{columns:1}
+body.mobile .card .sp{grid-template-columns:1fr !important;gap:12px}
+body.mobile .card .sp>div:first-child{border-right:0;padding-right:0;border-bottom:2px dashed rgba(224,122,36,.3);padding-bottom:10px}
+body.mobile .pintro .photo{left:0;right:0;width:auto;height:36%;bottom:auto}
+body.mobile .pintro .photo::after{background:linear-gradient(180deg,rgba(42,18,6,0) 35%,rgba(42,18,6,1) 100%)}
+body.mobile .pintro .left{top:27%;left:0;right:0;width:auto;padding:0 20px 40px;overflow-y:auto;display:block;-webkit-overflow-scrolling:touch}
+body.mobile .pintro .code{font-size:15px}
+body.mobile .pintro h2{font-size:34px;margin:2px 0 10px}
+body.mobile .pintro .claim{font-size:15px;padding:6px 14px}
+body.mobile .pintro .claim span{font-size:12px}
+body.mobile .pintro .fit{overflow:visible;margin-top:16px}
+body.mobile .tbl thead{display:none}
+body.mobile .tbl,body.mobile .tbl tbody,body.mobile .tbl tr{display:block;width:100%}
+body.mobile .tbl{border-radius:14px}
+body.mobile .tbl tr{padding:12px 14px;border-bottom:1px solid rgba(224,122,36,.2)}
+body.mobile .tbl tr:nth-child(even){background:rgba(251,230,204,.45)}
+body.mobile .tbl td{display:block;padding:2px 0;border:0;font-size:14px;white-space:normal !important;background:none !important}
+body.mobile .tbl td.code,body.mobile .tbl td.nm{display:inline-block;margin-right:8px}
+body.mobile .tbl td.code{font-size:15px}
+body.mobile .tbl td.nm{font-size:19px}
+body.mobile .cloudslide .content{overflow:hidden;display:flex;flex-direction:column}
+body.mobile .cloudbar{flex-wrap:wrap;gap:8px;margin:0 0 10px}
+body.mobile .cloudbar>span,body.mobile .legend{display:none}
+body.mobile .btn{font-size:13px;padding:5px 12px}
+body.mobile #cloud{width:100%;height:auto;flex:1;min-height:0;border-radius:16px}
+body.mobile #info{left:10px;right:10px;width:auto;bottom:10px;padding:14px 16px}
+body.mobile #info h3{font-size:24px}
+body.mobile #info .st{font-size:14px}
+body.mobile #info .pl button{font-size:13px}
+body.mobile #music{top:10px;right:10px;padding:3px}
+body.mobile #mLabel,body.mobile #music .bars{display:none !important}
+body.mobile #mPlay{width:34px;height:34px;font-size:14px}
+body.mobile #mNext{width:28px;height:28px}
+#swipeHint{display:none}
+body.mobile #swipeHint{display:block;position:fixed;left:50%;bottom:22px;transform:translateX(-50%);z-index:25;background:rgba(58,24,6,.85);color:#ffe2c0;font-size:14px;letter-spacing:.1em;padding:8px 18px;border-radius:999px;pointer-events:none;transition:opacity .8s}
+body.mobile #swipeHint.gone{opacity:0}
+@media (max-height:500px){
+  body.mobile .content{padding-top:14px}
+  body.mobile .kicker{display:none}
+  body.mobile .title{font-size:22px;margin:0;padding-right:90px}
+  body.mobile .title small{display:inline;font-size:13px;margin-left:10px}
+  body.mobile .rule{margin:6px 0 10px}
+  body.mobile .cover h1{font-size:40px}
+  body.mobile .pintro .photo{width:40%;height:auto;bottom:0;left:auto}
+  body.mobile .pintro .photo::after{background:linear-gradient(90deg,rgba(42,18,6,1) 0%,rgba(42,18,6,0) 40%)}
+  body.mobile .pintro .left{top:0;right:40%;padding:16px 18px 30px}
+  body.mobile .pintro h2{font-size:28px}
+}
 </style>
 </head>
 <body>
@@ -180,6 +264,7 @@ html,body{width:100%;height:100%;background:#1e0f06;overflow:hidden;font-family:
   <button id="mNext" title="下一首" aria-label="下一首">⏭</button>
 </div>
 <audio id="bgm" preload="auto" src="music/guqin-pingsha.mp3"></audio>
+<div id="swipeHint">← 左右滑動換頁 →</div>
 <div id="credits"><div class="box"><h3>音樂來源</h3><ul id="musList"></ul><h3 style="margin-top:16px">圖片來源</h3><p>本簡報照片皆取自 Wikimedia Commons，依各授權條款標示：</p><ul id="credList"></ul><p style="margin-top:12px;color:#8a5a3a">（點擊任意處關閉）</p></div></div>
 
 <script>
@@ -421,7 +506,7 @@ const words = KW.map(([label,type,alias])=>{
 
 const cloud = document.getElementById('cloud');
 const info = document.getElementById('info');
-const CW=1440, CH=610;
+let CW=1440, CH=610, CK=1;
 const COL = {i:['#b4521a','#8a3b12','#d2691e','#c0451a'], e:['#d99a3a','#a0602a','#e08a2e','#7a4a1c']};
 const maxC = words[0].count, minC = words[words.length-1].count;
 const meas = document.createElement('canvas').getContext('2d');
@@ -440,21 +525,26 @@ words.forEach((w,i)=>{
 });
 let filter='all';
 function layout(randomize){
+  if (document.body.classList.contains('mobile')) {
+    CW = cloud.clientWidth || 360; CH = cloud.clientHeight || 500;
+    CK = Math.max(0.32, Math.min(1, Math.sqrt(CW*CH/(1440*610))));
+  } else { CW=1440; CH=610; CK=1; }
+  const RX = Math.sqrt(CW/CH), RY = 1/RX;
   const placed=[];
   const vis = words.filter(w=>filter==='all'||w.type===filter);
   words.forEach(w=>{ if(!vis.includes(w)){ w.el.style.opacity=0; w.el.style.pointerEvents='none'; }});
   const a0 = randomize ? Math.random()*Math.PI*2 : 0;
   vis.forEach((w,idx)=>{
-    let size = w.size, ok=false, x=0,y=0,bw=0,bh=0;
+    let size = w.size*CK, ok=false, x=0,y=0,bw=0,bh=0;
     for(let tries=0; tries<6 && !ok; tries++){
       meas.font = `700 ${size}px ${w.type==='i'?'PMingLiU,新細明體':'Microsoft JhengHei'}`;
-      bw = meas.measureText(w.label).width + 24; bh = size*1.08 + 6;
+      bw = meas.measureText(w.label).width + 24*CK; bh = size*1.08 + 6*CK;
       const dir = (idx%2? 1:-1);
       for(let s=0; s<4000; s++){
-        const ang = a0 + s*0.18*dir, r = 2.2*Math.sqrt(s)*6;
-        x = CW/2 + r*Math.cos(ang)*1.55 - bw/2;
-        y = CH/2 + r*Math.sin(ang)*0.75 - bh/2;
-        if (x<10||y<10||x+bw>CW-10||y+bh>CH-10) continue;
+        const ang = a0 + s*0.18*dir, r = 2.2*Math.sqrt(s)*6*Math.max(CK,0.5);
+        x = CW/2 + r*Math.cos(ang)*RX - bw/2;
+        y = CH/2 + r*Math.sin(ang)*RY - bh/2;
+        if (x<6||y<6||x+bw>CW-6||y+bh>CH-6) continue;
         if (!placed.some(p=> x<p.x+p.w && x+bw>p.x && y<p.y+p.h && y+bh>p.y)){ ok=true; break; }
       }
       if(!ok) size*=0.85;
@@ -464,7 +554,7 @@ function layout(randomize){
     w.el.style.fontSize = size+'px';
     w.el.style.opacity = 1; w.el.style.pointerEvents='auto';
     w.el.style.transitionDelay = (idx*18)+'ms';
-    w.el.style.transform = `translate(${x+7}px,${y+3}px)`;
+    w.el.style.transform = `translate(${x+12*CK}px,${y+3*CK}px)`;
   });
 }
 function burst(){ // 從中心綻放
@@ -490,6 +580,7 @@ document.getElementById('reshuffle').onclick=()=>{unselect(); layout(true);};
 
 /* ============ 自動縮放文字以符合版面 ============ */
 function fitAll(){
+  if (document.body.classList.contains('mobile')) { document.querySelectorAll('.fitme').forEach(el=>el.style.fontSize=''); return; }
   document.querySelectorAll('.fitme').forEach(el=>{
     let s = el.classList.contains('fit') ? 27 : 30;
     el.style.fontSize = s+'px';
@@ -505,6 +596,7 @@ function go(i){
   slides[cur].classList.remove('active');
   // 重新觸發動畫
   const s = slides[i]; s.classList.remove('active'); void s.offsetWidth; s.classList.add('active');
+  s.querySelectorAll('.content,.pintro .left').forEach(c=>c.scrollTop=0);
   cur = i; prog.style.width = ((i+1)/slides.length*100)+'%';
   try { history.replaceState(null,'','#'+(i+1)); } catch(e) {}
   if (s.classList.contains('cloudslide')) { unselect(); setTimeout(burst, 350); }
@@ -524,8 +616,9 @@ document.addEventListener('keydown', e=>{
   else if (e.key==='Escape') document.getElementById('credits').classList.remove('show');
 });
 let tx=null;
-document.addEventListener('touchstart',e=>tx=e.touches[0].clientX,{passive:true});
-document.addEventListener('touchend',e=>{ if(tx===null)return; const dx=e.changedTouches[0].clientX-tx; if(Math.abs(dx)>60) go(cur+(dx<0?1:-1)); tx=null;});
+let ty=null;
+document.addEventListener('touchstart',e=>{tx=e.touches[0].clientX; ty=e.touches[0].clientY;},{passive:true});
+document.addEventListener('touchend',e=>{ if(tx===null)return; const dx=e.changedTouches[0].clientX-tx, dy=e.changedTouches[0].clientY-ty; if(Math.abs(dx)>50 && Math.abs(dx)>Math.abs(dy)*1.4) go(cur+(dx<0?1:-1)); tx=null; ty=null;});
 function toggleFull(){ try { const p = document.fullscreenElement ? document.exitFullscreen() : document.documentElement.requestFullscreen(); if (p && p.catch) p.catch(()=>{}); } catch(e) {} }
 document.getElementById('bPrev').onclick=()=>go(cur-1);
 document.getElementById('bNext').onclick=()=>go(cur+1);
@@ -577,8 +670,19 @@ EVTS.forEach(t=>document.addEventListener(t, onFirst, true));
 autoStart();
 cr.onclick=()=>cr.classList.remove('show');
 
-function scale(){ const k=Math.min(innerWidth/1600, innerHeight/900); stage.style.transform=`scale(${k})`; }
-addEventListener('resize', scale); scale();
+let modeMobile = null;
+function scale(){
+  const mobile = innerWidth < 900 || innerHeight < 600;
+  document.body.classList.toggle('mobile', mobile);
+  if (!mobile) { const k=Math.min(innerWidth/1600, innerHeight/900); stage.style.transform=`scale(${k})`; }
+  else stage.style.transform='';
+  if (mobile !== modeMobile) { modeMobile = mobile; fitAll(); layout(false); }
+  else if (mobile) layout(false);
+}
+let rT=null;
+addEventListener('resize', ()=>{ clearTimeout(rT); rT=setTimeout(scale,150); });
+scale();
+setTimeout(()=>document.getElementById('swipeHint').classList.add('gone'), 4000);
 
 fitAll();
 layout(false);
