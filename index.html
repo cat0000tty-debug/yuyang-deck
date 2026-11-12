@@ -176,10 +176,10 @@ html,body{width:100%;height:100%;background:#1e0f06;overflow:hidden;font-family:
 <div id="music" title="背景音樂 (M)">
   <button id="mPlay" aria-label="播放背景音樂">♪</button>
   <span class="bars"><i></i><i></i><i></i></span>
-  <span id="mLabel">Healing（冥想療癒）</span>
+  <span id="mLabel">古琴《平沙落雁》</span>
   <button id="mNext" title="下一首" aria-label="下一首">⏭</button>
 </div>
-<audio id="bgm" preload="auto" src="music/healing.mp3"></audio>
+<audio id="bgm" preload="auto" src="music/guqin-pingsha.mp3"></audio>
 <div id="credits"><div class="box"><h3>音樂來源</h3><ul id="musList"></ul><h3 style="margin-top:16px">圖片來源</h3><p>本簡報照片皆取自 Wikimedia Commons，依各授權條款標示：</p><ul id="credList"></ul><p style="margin-top:12px;color:#8a5a3a">（點擊任意處關閉）</p></div></div>
 
 <script>
@@ -536,8 +536,8 @@ document.getElementById('bCred').onclick=()=>cr.classList.add('show');
 
 /* ============ 背景音樂 ============ */
 const TRACKS = [
-  {src:"music/healing.mp3", name:"Healing（冥想療癒）", a:"Kevin MacLeod (incompetech.com)", l:"CC BY 3.0", u:"https://commons.wikimedia.org/wiki/File:Healing_(ISRC_USUAN1200048).mp3", note:""},
-  {src:"music/inner-light.mp3", name:"Inner Light（靜心）", a:"Kevin MacLeod (incompetech.com)", l:"CC BY 3.0", u:"https://commons.wikimedia.org/wiki/File:Kevin_MacLeod_-_Inner_Light.ogg", note:""}
+  {src:"music/guqin-pingsha.mp3", name:"古琴《平沙落雁》", a:"Charlie Huang（演奏）", l:"CC BY 2.5", u:"https://commons.wikimedia.org/wiki/File:Pingsha_Luoyan.ogg", note:"曲譜：蕉庵琴譜 (1868)"},
+  {src:"music/guqin-peilan.mp3", name:"古琴《佩蘭》", a:"Charlie Huang（演奏）", l:"CC BY 2.5", u:"https://commons.wikimedia.org/wiki/File:Pei_Lan.ogg", note:"曲譜：天聞閣琴譜 (1876)"}
 ];
 document.getElementById('musList').innerHTML = TRACKS.map(t=>`<li>${t.name} — ${t.a}，${t.l}${t.note?'，'+t.note:''}，<a href="${t.u}" target="_blank">Wikimedia Commons</a></li>`).join('');
 const bgm = document.getElementById('bgm'), mBox = document.getElementById('music'),
